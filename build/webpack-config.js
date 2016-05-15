@@ -1,21 +1,18 @@
 var webpack = require('webpack')
 var path = require('path')
+var qs = require('querystring')
 
 var webpackConfig = {
-  name: 'client',
-  target: 'web',
-  devtool: 'sourcemap',
+  devtool: '#source-map',
   context: path.join(__dirname, '..'),
-  entry: {
-    bundle: [
-      '../src/client/index.jsx',
-      'webpack-hot-middleware/client'
-    ]
-  },
+  entry: [
+    path.join(__dirname, '../src/client/index.jsx'),
+    'webpack-hot-middleware/client'
+  ],
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, '../dist/'),
-    publicPath: path.join(__dirname, '../public/')
+    path: '/dist/',
+    publicPath: '/public/'
   },
   resolve: {
     modules: ['node_modules', 'src', 'vendor'],
@@ -37,6 +34,7 @@ var webpackConfig = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel',
+        // include: path.join(__dirname, '../src/client/'),
         query: {
           cacheDirectory: 'build-cache',
           presets: [
@@ -51,12 +49,12 @@ var webpackConfig = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css?sourceMap!postcss',
-        query: {
+        // include: path.join(__dirname, '../src/client/'),
+        loader: 'style!css?' + qs.stringify({
           modules: true,
           importLoaders: 1,
           localIdentName: '[path][name]-[local]'
-        }
+        }) + '!postcss'
       }
     ]
   },

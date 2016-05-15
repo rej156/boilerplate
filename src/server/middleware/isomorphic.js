@@ -20,7 +20,6 @@ function handleRouter(req, res, props) {
         <RouterContext {...props} />
       </ContextProvider>
     ))
-    .then((html) => { console.log(html)})
     .then((html) => {
       res.status(200)
         .render(template, {

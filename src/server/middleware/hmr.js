@@ -3,18 +3,14 @@ import webpackConfig from '../../../build/webpack-config.js'
 import chokidar from 'chokidar'
 import path from 'path'
 
+console.log(path.join(__dirname, '../../../public/'))
 const compiler = webpack(webpackConfig)
 const watcher = chokidar.watch('../');
 const middleware = [
   require('webpack-dev-middleware')(compiler, {
     noInfo: true,
-    publicPath: path.join(__dirname, '../../../public/'),
-    historyApiFallback: true,
-    hot: true,
-    quiet: true,
-    stats: {
-      colors: true
-    }
+    publicPath: '/public/',
+    path: '/dist/'
   }),
   require('webpack-hot-middleware')(compiler)
 ]

@@ -60,6 +60,18 @@ var webpackConfig = {
       }
     ]
   },
+  postLoaders: [
+    {
+      exclude: /node_modules/,
+      loader: "npm-install-loader",
+      test: /\.js$/,
+      query: {
+        cli: {
+          save: true
+        }
+      }
+    },
+  ],
   postcss: function () {
     return [
       require('lost'),

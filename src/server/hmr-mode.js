@@ -2,8 +2,6 @@ import feathers from 'feathers'
 import compression from 'compression'
 import serveStaticMiddleware from './middleware/serve-static'
 import hmrMiddleware from './middleware/hmr'
-import isomorphicMiddleware from './middleware/isomorphic'
-import { startWebServer as start } from './start.js'
 
 const app = feathers();
 
@@ -12,5 +10,6 @@ app
   .set('view engine', 'ejs')
   .configure(serveStaticMiddleware)
   .use(hmrMiddleware)
-  .use(isomorphicMiddleware)
-  .configure(start)
+  .use((req, res) => require('./middleware/isomorphic.js').default(req, res))
+
+export default app

@@ -1,11 +1,9 @@
 import webpack from 'webpack'
 import webpackConfig from '../../../build/webpack-config.js'
-import chokidar from 'chokidar'
 import path from 'path'
+import chokidar from 'chokidar'
 
-console.log(path.join(__dirname, '../../../public/'))
 const compiler = webpack(webpackConfig)
-const watcher = chokidar.watch('../');
 const middleware = [
   require('webpack-dev-middleware')(compiler, {
     noInfo: true,
@@ -15,11 +13,17 @@ const middleware = [
   require('webpack-hot-middleware')(compiler)
 ]
 
+// Do "hot-reloading of API stuff on the server"
+// Throw away the cached server modules and let them be re-required next time
+const watcher = chokidar.watch(path.join(__dirname, '../../'));
 watcher.on('ready', function() {
   watcher.on('all', function() {
     console.log("Clearing /server/ module cache from server");
     Object.keys(require.cache).forEach(function(id) {
-      if (/[\/\\]server[\/\\]/.test(id)) delete require.cache[id];
+      if (id.includes('/server/') || id.includes('/shared/')) {
+        console.log(id)
+        delete require.cache[id];
+      }
     });
   });
 });

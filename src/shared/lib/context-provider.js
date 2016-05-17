@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import { contextTypes } from 'mobx-connect'
 
 export default class ContextProvider extends Component {
@@ -8,8 +8,9 @@ export default class ContextProvider extends Component {
   static childContextTypes = contextTypes;
 
   getChildContext() {
-    return this.props.context;
+    return this.props.store;
   }
+
   render() {
     return this.props.children;
   }

@@ -40,10 +40,22 @@ var webpackConfig = {
           presets: [
             "es2015-webpack",
             "stage-0",
-            "react"
+            "react",
+            "react-hmre"
           ],
           plugins: [
-            "transform-decorators-legacy"
+            "transform-decorators-legacy",
+            ["react-transform", {
+              "transforms": [{
+                "transform": "react-transform-hmr",
+                // if you use React Native, pass "react-native" instead:
+                "imports": ["react"],
+                // this is important for Webpack HMR:
+                "locals": ["module"]
+              }]
+              // note: you can put more transforms into array
+              // this is just one of them!
+            }]
           ]
         }
       },

@@ -7,3 +7,4 @@ const inject = (state) => ({
 export default function(state) {
   return (state) ? inject(state) : null
 }
+

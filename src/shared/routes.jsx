@@ -9,6 +9,7 @@ import Home from './components/containers/Home/Home.jsx'
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
+    <Route path="/home" component={Home} />
     {/* <Route path="*" component={NotFound} status={404} /> */}
   </Route>
 )

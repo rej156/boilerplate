@@ -16,7 +16,7 @@ export function fetchData(store, components, params, query) {
    Used on the client-side.
 */
 export function fetchDataOnLocationMatch(history, routes, match, store) {
-  let ssrLocation = store.app.ssrLocation;
+  let ssrLocation = store.app.ssrLocation
   history.listen((e) => {
     if (e.pathname !== ssrLocation) {
       match({ routes, location: e.pathname }, (error, redirect, props) => {

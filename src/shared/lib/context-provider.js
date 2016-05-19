@@ -12,6 +12,6 @@ export default class ContextProvider extends Component {
   }
 
   render() {
-    return this.props.children;
+    return this.props && this.props.children;
   }
 }

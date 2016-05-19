@@ -23,7 +23,7 @@ watcher.on('ready', function() {
   watcher.on('all', function() {
     console.log("Clearing /server/ module cache from server");
     Object.keys(require.cache).forEach(function(id) {
-      if (id.includes('/server/') || id.includes('/shared/')) {
+      if (id.includes('/server/')) {
         console.log(id)
         delete require.cache[id];
       }
@@ -36,7 +36,7 @@ watcher.on('ready', function() {
 compiler.plugin('done', function() {
   console.log("Clearing /client/ module cache from server");
   Object.keys(require.cache).forEach(function(id) {
-    if (/[\/\\]client[\/\\]/.test(id)) delete require.cache[id];
+    if (id.includes('/shared/')) delete require.cache[id];
   });
 });
 

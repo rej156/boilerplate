@@ -9,14 +9,15 @@ import createStore from '../../shared/lib/create-store.js'
 
 function handleRouter(req, res, props) {
   const store = createStore({
-    app: { ssrLocation: req.url }
+    app: { ssrLocation: req.url },
+    ticker: { timer: 5 }
   })
   const build = (process.env.NODE_ENV === 'production') ? '/public' : null
   const template = path.join(__dirname, '../template/index.ejs')
 
   fetchData(store, props.components, props.params, props.location.query)
     .then(() => renderToString(
-      <ContextProvider context={{ store }}>
+      <ContextProvider store={{ store }}>
         <RouterContext {...props} />
       </ContextProvider>
     ))

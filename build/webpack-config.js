@@ -6,6 +6,7 @@ var webpackConfig = {
   devtool: '#source-map',
   context: path.join(__dirname, '..'),
   entry: [
+    'react-hot-loader/patch',
     path.join(__dirname, '../src/client/index.jsx'),
     'webpack-hot-middleware/client'
   ],
@@ -33,6 +34,12 @@ var webpackConfig = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
+        loader: 'react-hot/webpack'
+        // include: path.join(__dirname, '../src/client/'),
+      },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
         loader: 'babel',
         // include: path.join(__dirname, '../src/client/'),
         query: {
@@ -40,22 +47,11 @@ var webpackConfig = {
           presets: [
             "es2015-webpack",
             "stage-0",
-            "react",
-            "react-hmre"
+            "react"
           ],
           plugins: [
             "transform-decorators-legacy",
-            ["react-transform", {
-              "transforms": [{
-                "transform": "react-transform-hmr",
-                // if you use React Native, pass "react-native" instead:
-                "imports": ["react"],
-                // this is important for Webpack HMR:
-                "locals": ["module"]
-              }]
-              // note: you can put more transforms into array
-              // this is just one of them!
-            }]
+            "react-hot-loader/babel"
           ]
         }
       },

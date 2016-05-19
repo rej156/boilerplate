@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'mobx-connect'
 import styles from './App.css'
-// dev tools
-// import DevTools from 'mobx-react-devtools'
+import DevTools from 'mobx-react-devtools'
 
 @connect
 export default class App extends Component {
@@ -11,6 +10,7 @@ export default class App extends Component {
     return (
       <div className={styles.app}>
         {this.props.children}
+        <DevTools />
       </div>
     )
   }

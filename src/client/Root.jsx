@@ -4,7 +4,6 @@ import { Router, browserHistory } from 'react-router'
 import routes from '../shared/routes.jsx'
 import { connect } from 'mobx-connect'
 
-@connect
 export default class Root extends Component {
   render() {
     const store = this.props.store

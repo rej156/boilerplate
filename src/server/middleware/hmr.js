@@ -5,7 +5,6 @@ import chokidar from 'chokidar'
 
 const compiler = webpack(webpackConfig)
 const middleware = [
-  require('webpack-hot-middleware')(compiler),
   require('webpack-dev-middleware')(compiler, {
     noInfo: true,
     publicPath: '/public/',
@@ -13,7 +12,8 @@ const middleware = [
     hot: true,
     historyApiFallback: true,
     stats: { colors: true }
-  })
+  }),
+  require('webpack-hot-middleware')(compiler)
 ]
 
 // Do "hot-reloading of API stuff on the server"

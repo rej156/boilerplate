@@ -7,8 +7,8 @@ var webpackConfig = {
   context: path.join(__dirname, '..'),
   entry: [
     'react-hot-loader/patch',
-    path.join(__dirname, '../src/client/index.jsx'),
-    'webpack-hot-middleware/client'
+    'webpack-hot-middleware/client',
+    './src/client/index.jsx',
   ],
   output: {
     filename: 'bundle.js',
@@ -31,12 +31,6 @@ var webpackConfig = {
     //   }
     // ],
     loaders: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: 'react-hot/webpack'
-        // include: path.join(__dirname, '../src/client/'),
-      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,

@@ -19,7 +19,6 @@
   "homepage": "https://github.com/benjaminlees/feathersjs-react-mobx-realtime#readme",
   "devDependencies": {
     "babel-loader": "^6.2.4",
-    "babel-preset-react-hmre": "^1.1.1",
     "css-loader": "^0.23.1",
     "lost": "^6.7.2",
     "mobx-react-devtools": "^4.0.5",
@@ -32,7 +31,7 @@
     "postcss-simple-vars": "^1.2.0",
     "postcss-url": "^5.1.2",
     "querystring": "^0.2.0",
-    "react-transform-hmr": "^1.0.4",
+    "react-hot-loader": "^3.0.0-beta.2",
     "style-loader": "^0.13.1",
     "webpack": "^2.1.0-beta.7"
   },

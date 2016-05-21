@@ -1,20 +1,14 @@
 import feathers from 'feathers'
+import rest from 'feathers-rest'
 
+const app = feathers()
 
-class MessagesService {
-  get(id, params) {
-    return Promise.resolve({id, 'text': 'Whatever mate'})
-  }
-}
+app
+  .configure(rest())
+  .use('/messages', {
+    get(id, params) {
+      return Promise.resolve({id, text: 'hello world'})
+    }
+  })
 
-const Message = {
-  get(id, params) {
-    return Promise.resolve({id, 'text': 'yay'})
-  }
-}
-
-const app = feathers().use('/messages', Message)
-
-export default function() {
-  return Message
-}
+export default app

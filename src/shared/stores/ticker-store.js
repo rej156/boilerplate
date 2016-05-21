@@ -7,10 +7,10 @@ export default class TickerStore {
     Object.assign(this, ticker);
   }
 
-  @computed get timerMultiplied() { return this.timer * 1 }
+  @computed get timerMultiplied() { return this.timer * 3 }
 
   incrementTimer(count) {
-    this.timer += (count * 2)
+    this.timer += count
   }
 
   resetTimer() {

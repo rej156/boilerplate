@@ -2,17 +2,21 @@ var webpack = require('webpack')
 var path = require('path')
 var qs = require('querystring')
 
+console.log(__dirname)
 var webpackConfig = {
-  devtool: '#source-map',
-  context: path.join(__dirname, '..'),
+  name: 'client',
+  target: 'web',
+  devtool: 'sourcemap',
+  context: path.join(__dirname, '../'),
   entry: [
     'react-hot-loader/patch',
-    'webpack-hot-middleware/client',
-    './src/client/index.jsx',
+    'webpack-dev-server/client?http://localhost:8080/',
+    'webpack/hot/dev-server',
+    './src/client/index.jsx'
   ],
   output: {
     filename: 'bundle.js',
-    path: '/dist/',
+    path: path.join(__dirname, '../dist/'),
     publicPath: '/public/'
   },
   resolve: {
@@ -20,8 +24,8 @@ var webpackConfig = {
     extensions: ['', '.js', '.jsx']
   },
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoErrorsPlugin()
   ],
   module: {
@@ -39,7 +43,7 @@ var webpackConfig = {
         query: {
           cacheDirectory: 'build-cache',
           presets: [
-            "es2015-webpack",
+            "es2015",
             "stage-0",
             "react"
           ],
@@ -78,7 +82,7 @@ var webpackConfig = {
       require('postcss-include')(),
       require('postcss-simple-vars'),
       require('postcss-url')(),
-      require('postcss-cssnext')({ browsers: ['last 2 versions'] }),
+      require('postcss-cssnext')({ browsers: ['iOS >= 7', 'Android >= 4', 'Chrome >= 43'] }),
       require('postcss-bem-linter')(),
       require('postcss-reporter')()
     ]

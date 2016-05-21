@@ -9,10 +9,10 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <p onClick={() => this.context.store.ticker.incrementTimer(1)}>Increment function</p>
-        <p onClick={() => this.context.store.ticker.timer += 5}>Increment by mutation ++</p>
-        <p>{this.context.store.ticker.timer}</p>
-        <p>{this.context.store.ticker.timerMultiplied}</p>
+        <p onClick={() => this.context.store.ticker.incrementTimer(2)}>Increment timer via store setter function</p>
+        <p onClick={() => this.context.store.ticker.timer += 3}>Increment by mutation ++</p>
+        <p>Timer from observable: {this.context.store.ticker.timer}</p>
+        <p>Timer from computed getter: {this.context.store.ticker.timerMultiplied}</p>
       </div>
     )
   }

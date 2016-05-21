@@ -1,43 +1,32 @@
 import webpack from 'webpack'
+import webpackDevServer from 'webpack-dev-server'
 import webpackConfig from '../../../build/webpack-config.js'
 import path from 'path'
-import chokidar from 'chokidar'
 
-const compiler = webpack(webpackConfig)
-const middleware = [
-  require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: '/public/',
-    path: '/dist/',
-    hot: true,
-    historyApiFallback: true,
-    stats: { colors: true }
-  }),
-  require('webpack-hot-middleware')(compiler)
-]
+const webpackDevServerConfig = {
+  contentBase: path.join(__dirname, '../../'),
+  hot: true,
+  quiet: false,
+  noInfo: false,
+  lazy: false,
+  stats: {
+    chunks: false,
+    colors: true,
+    children: false
+  },
+  watchOptions: {
+    poll: true
+  },
+  historyApiFallback: false,
+  publicPath: '/public/',
+  proxy: {
+    '*': 'http://localhost:' + (process.env.PORT || 3000)
+  },
+  host: 'localhost'
+}
 
-// Do "hot-reloading of API stuff on the server"
-// Throw away the cached server modules and let them be re-required next time
-const watcher = chokidar.watch(path.join(__dirname, '../../'));
-watcher.on('ready', function() {
-  watcher.on('all', function() {
-    console.log("Clearing /server/ module cache from server");
-    Object.keys(require.cache).forEach(function(id) {
-      if (id.includes('/server/')) {
-        console.log(id)
-        delete require.cache[id];
-      }
-    });
-  });
-});
+const server = new webpackDevServer(webpack(webpackConfig), webpackDevServerConfig);
 
-// Do "hot-reloading" of react stuff on the server
-// Throw away the cached client modules and let them be re-required next time
-compiler.plugin('done', function() {
-  console.log("Clearing /client/ module cache from server");
-  Object.keys(require.cache).forEach(function(id) {
-    if (id.includes('/shared/')) delete require.cache[id];
-  });
-});
-
-export default middleware
+server.listen(8080, function() {
+  console.log('Webpack dev server running at localhost:8080')
+})

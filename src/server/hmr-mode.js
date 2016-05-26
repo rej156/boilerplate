@@ -4,7 +4,7 @@ import compression from 'compression'
 import serveStaticMiddleware from './middleware/serve-static'
 import cors from 'cors'
 import bodyParser from 'body-parser'
-import messagesServices from './services/messages.js'
+import services from './services/index.js'
 
 const app = feathers()
 
@@ -17,7 +17,7 @@ app
   .set('view engine', 'ejs')
   .configure(rest())
   .configure(serveStaticMiddleware)
-  .use('/api', messagesServices)
+  .use('/api', services)
   .use((req, res) => require('./middleware/isomorphic.js').default(req, res))
 
 export default app

@@ -1,5 +1,6 @@
 import feathers from 'feathers'
 import rest from 'feathers-rest'
+import socketio from 'feathers-socketio'
 import traverseDir from '../../shared/lib/traverse-dir.js'
 import R from 'ramda'
 import fs from 'fs'
@@ -27,6 +28,7 @@ const app = feathers()
 
 app
   .configure(rest())
+  .configure(socketio({ wsEngine: 'uws' }))
   .configure(registerServices)
 
 export default app

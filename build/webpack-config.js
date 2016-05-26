@@ -2,7 +2,6 @@ var webpack = require('webpack')
 var path = require('path')
 var qs = require('querystring')
 
-console.log(__dirname)
 var webpackConfig = {
   name: 'client',
   target: 'web',

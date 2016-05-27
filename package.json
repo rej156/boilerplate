@@ -25,7 +25,6 @@
     "feathers-memory": "^0.7.1",
     "lost": "^6.7.2",
     "mobx-react-devtools": "^4.0.5",
-    "npm-install-loader": "^1.1.1",
     "postcss-bem-linter": "^2.5.1",
     "postcss-cssnext": "^2.5.2",
     "postcss-include": "^0.3.1",

@@ -1,5 +1,3 @@
-export default class MessageService {
-  get(id, params) {
-    return Promise.resolve({ id, what: '?' })
-  }
-}
+import memory from 'feathers-memory'
+
+export default memory()

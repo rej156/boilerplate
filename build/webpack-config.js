@@ -48,6 +48,9 @@ var webpackConfig = {
           ],
           plugins: [
             "transform-decorators-legacy",
+            "transform-regenerator",
+            "transform-runtime",
+            "syntax-async-functions",
             "react-hot-loader/babel"
           ]
         }

@@ -1,4 +1,5 @@
 import feathers from 'feathers'
+import handler from 'feathers-errors/handler'
 import rest from 'feathers-rest'
 import cors from 'cors'
 import hooks from 'feathers-hooks'
@@ -32,6 +33,7 @@ const app = feathers()
 app
   .options('*', cors())
   .use(cors())
+  .use(handler())
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
   .configure(hooks())

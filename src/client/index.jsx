@@ -7,8 +7,7 @@ import { fetchDataOnLocationMatch } from '../shared/lib/fetch-data.js'
 import Root from './Root.jsx'
 import routes from '../shared/routes.jsx'
 import { AppContainer } from 'react-hot-loader'
-import { observable, computed, autorun } from 'mobx'
-import injectTapEventPlugin from 'react-tap-event-plugin'
+import { observable, useStrict } from 'mobx'
 
 const store = createStore(window.INITIAL_STATE)
 fetchDataOnLocationMatch(browserHistory, routes, match, store)
@@ -27,7 +26,7 @@ function renderApp(Root, hmrStore) {
 }
 
 renderApp(Root, store)
-injectTapEventPlugin()
+useStrict(true)
 
 if (module.hot) {
   if (!window.store) window.store = store

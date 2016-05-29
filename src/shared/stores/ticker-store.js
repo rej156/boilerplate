@@ -1,4 +1,4 @@
-import { observable, computed, autorun } from 'mobx'
+import { observable, computed, action } from 'mobx'
 
 export default class TickerStore {
   @observable timer = 0;
@@ -9,11 +9,10 @@ export default class TickerStore {
 
   @computed get timerMultiplied() { return this.timer * 3 }
 
-  incrementTimer(count) {
+  @action incrementTimer(count) {
     this.timer += count
   }
 
-  resetTimer() {
-    this.timer = 0;
-  }
+  @action resetTimer() { this.timer = 0 }
+
 }

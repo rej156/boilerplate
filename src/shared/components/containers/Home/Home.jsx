@@ -12,8 +12,6 @@ export default class Home extends Component {
       this.context.store.messages.addToMessages(message))
   }
 
-  @action resetTimer = () => this.context.store.ticker.timer = 0
-
   render() {
     return (
       <div>
@@ -23,7 +21,7 @@ export default class Home extends Component {
             onChange={this.context.store.messages.updateMessageText} />
           <button type="submit">Send message</button>
         </form>
-        <p onClick={this.resetTimer}>Reset Timer</p>
+        <p onClick={() => this.context.store.ticker.resetTimer()}>Reset Timer</p>
         <p onClick={() => this.context.store.ticker.incrementTimer(2)}>Increment timer via store setter function</p>
         <p onClick={() => this.context.store.ticker.timer += 3}>Increment by mutation ++</p>
         <p>^^^ Actually you can't do this in mobx strict mode which is enabled.</p>

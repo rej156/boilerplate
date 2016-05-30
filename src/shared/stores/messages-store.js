@@ -23,10 +23,7 @@ export default class MessagesStore {
 
   @action createMessage = async (e) => {
     e.preventDefault()
-    try {
-      const createdMessage = await this.service.create({ text: this.message })
-      this.addToMessages(createdMessage)
-    }
+    try { await this.service.create({ text: this.message }) }
     catch(e) { console.log(e) }
   }
 

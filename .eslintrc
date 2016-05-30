@@ -1,0 +1,40 @@
+{
+  "root": true,
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "plugins": [ "babel" ],
+  "rules": {
+    "max-len": [2, 200, 2, {
+      "ignoreUrls": true,
+      "ignoreComments": false
+    }],
+    "comma-dangle": [
+      2,
+      "never"
+    ],
+    "quotes": [
+      2,
+      "single"
+    ],
+    "arrow-parens": 0,
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "semi": [
+      2,
+      "never"
+    ],
+    "react/jsx-no-bind": 0,
+    "no-nested-ternary": 0,
+    "babel/arrow-parens": [2, "always"]
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "globals": {
+    "browser": true,
+    "brandValuesGlobal": true
+  }
+}

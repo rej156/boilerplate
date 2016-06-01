@@ -1,8 +1,8 @@
 'use strict'
 require('css-modules-require-hook')({
   generateScopedName: '[path][name]-[local]'
-});
-require('babel-register')(require('./build/node-babel-config.json'));
+})
+require('babel-register')(require('./build/node-babel-config.json'))
 
 var server = require('./src/server/server.js').default
 var httpServer = server.listen(3000, function(err) {
@@ -19,18 +19,21 @@ var path = require('path')
 var watcher = chokidar.watch(path.join(__dirname, './src/'));
 watcher.on('ready', function() {
   watcher.on('all', function() {
-    console.log("Clearing /server/ module cache from server");
     Object.keys(require.cache).forEach(function(id) {
-      if (id.includes('/server/') || id.includes('/shared/')) {
-        console.log(id)
-        delete require.cache[id];
+      if (id.includes('/server/')) {
+        delete require.cache[id]
+        httpServer.close()
+        httpServer = require('./src/server/server.js').default.listen(3000, function(err) {
+          if (err) return console.log(err)
+          console.log("Clearing /server/ module cache");
+          console.log('Restarted server at http://%s:%d', 'localhost', '3000')
+        })
       }
-    });
-    httpServer.close()
-    httpServer = require('./src/server/server.js').default.listen(3000, function(err) {
-      if (err) return console.log(err)
-      console.log('Restarted server at http://%s:%d', 'localhost', '3000')
+      else if (id.includes('/shared/')) {
+        console.log("Clearing /shared/ module cache");
+        delete require.cache[id]
+      }
     })
-  });
-});
+  })
+})
 

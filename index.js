@@ -18,21 +18,18 @@ var chokidar = require('chokidar')
 var path = require('path')
 var watcher = chokidar.watch(path.join(__dirname, './src/'));
 watcher.on('ready', function() {
-  watcher.on('all', function() {
+  watcher.on('change', function() {
+    let restartServer = false
     Object.keys(require.cache).forEach(function(id) {
-      if (id.includes('/server/')) {
-        delete require.cache[id]
-        httpServer.close()
-        httpServer = require('./src/server/server.js').default.listen(3000, function(err) {
-          if (err) return console.log(err)
-          console.log("Clearing /server/ module cache");
-          console.log('Restarted server at http://%s:%d', 'localhost', '3000')
-        })
-      }
-      else if (id.includes('/shared/')) {
-        console.log("Clearing /shared/ module cache");
+      if (id.includes('/server/') || id.includes('/shared/')) {
         delete require.cache[id]
       }
+    })
+    httpServer.close()
+    httpServer = require('./src/server/server.js').default.listen(3000, function(err) {
+      if (err) return console.log(err)
+      restartServer = false
+      console.log('Restarted server at http://%s:%d', 'localhost', '3000')
     })
   })
 })

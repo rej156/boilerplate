@@ -1,11 +1,12 @@
 var webpack = require('webpack')
 var path = require('path')
-var qs = require('querystring')
+var HappyPack = require('happypack')
 
 var webpackConfig = {
   name: 'client',
   target: 'web',
-  devtool: 'sourcemap',
+  devtool: 'eval-source-map',
+  cache: true,
   context: path.join(__dirname, '../'),
   entry: [
     'react-hot-loader/patch',
@@ -19,20 +20,17 @@ var webpackConfig = {
     publicPath: '/public/'
   },
   resolve: {
-    modules: ['node_modules', 'src', 'vendor'],
+    modules: ['node_modules', 'src', 'vendors'],
     extensions: ['', '.js', '.jsx']
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new HappyPack({ id: 'js', threads: 8 }),
+    new HappyPack({ id: 'css', threads: 8 })
   ],
   module: {
-    // preLoaders: [
-    //   {
-    //     test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'eslint-loader'
-    //   }
-    // ],
     loaders: [
       {
         test: /\.(js|jsx)$/,
@@ -53,11 +51,13 @@ var webpackConfig = {
             "syntax-async-functions",
             "react-hot-loader/babel"
           ]
-        }
+        },
+        happy: { id: 'js' }
       },
       {
         test: /\.css$/,
-        loader: 'style!css?{ modules: true, importLoaders: 1, localIdentName: "[path][name]" }!postcss'
+        loader: 'style!css?{ modules: true, importLoaders: 1, localIdentName: "[path][name]" }!postcss',
+        happy: { id: 'css' }
       }
     ]
   },
@@ -72,9 +72,6 @@ var webpackConfig = {
       require('postcss-reporter')()
     ]
   }
-  // eslint: {
-  //   configFile: path.join(__dirname, '../.eslintrc')
-  // }
 }
 
 module.exports = webpackConfig

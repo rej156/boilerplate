@@ -57,12 +57,7 @@ var webpackConfig = {
       },
       {
         test: /\.css$/,
-        // include: path.join(__dirname, '../src/client/'),
-        loader: 'style!css?' + qs.stringify({
-          modules: true,
-          importLoaders: 1,
-          localIdentName: '[path][name]-[local]'
-        }) + '!postcss'
+        loader: 'style!css?{ modules: true, importLoaders: 1, localIdentName: "[path][name]" }!postcss'
       }
     ]
   },
@@ -77,6 +72,9 @@ var webpackConfig = {
       require('postcss-reporter')()
     ]
   }
+  // eslint: {
+  //   configFile: path.join(__dirname, '../.eslintrc')
+  // }
 }
 
 module.exports = webpackConfig

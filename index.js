@@ -1,6 +1,6 @@
 'use strict'
 require('css-modules-require-hook')({
-  generateScopedName: '[path][name]-[local]'
+  generateScopedName: '[path][name]'
 })
 require('babel-register')(require('./build/node-babel-config.json'))
 

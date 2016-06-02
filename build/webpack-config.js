@@ -10,8 +10,7 @@ var webpackConfig = {
   context: path.join(__dirname, '../'),
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080/',
-    'webpack/hot/dev-server',
+    'webpack-hot-middleware/client',
     './src/client/index.jsx'
   ],
   output: {

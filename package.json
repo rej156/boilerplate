@@ -24,6 +24,7 @@
     "css-loader": "^0.23.1",
     "feathers-memory": "^0.7.1",
     "happypack": "^2.1.1",
+    "http-proxy-middleware": "^0.15.2",
     "lost": "^6.8.0",
     "mobx-react-devtools": "^4.2.0",
     "postcss-bem-linter": "^2.5.1",
@@ -36,7 +37,8 @@
     "react-hot-loader": "^3.0.0-beta.2",
     "style-loader": "^0.13.1",
     "webpack": "^2.1.0-beta.8",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
     "babel-plugin-syntax-async-functions": "^6.8.0",
@@ -53,6 +55,7 @@
     "compression": "^1.6.2",
     "css-modules-require-hook": "^4.0.1",
     "ejs": "^2.4.2",
+    "express-http-proxy": "^0.6.0",
     "feathers": "^2.0.1",
     "feathers-errors": "^2.2.0",
     "feathers-hooks": "^1.5.4",

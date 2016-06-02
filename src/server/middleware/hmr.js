@@ -1,9 +1,12 @@
 import webpack from 'webpack'
-import webpackDevServer from 'webpack-dev-server'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpackConfig from '../../../build/webpack-config.js'
+import feathers from 'feathers'
 import path from 'path'
+import proxy from 'http-proxy-middleware'
 
-const webpackDevServerConfig = {
+const webpackDevMiddlewareConfig = {
   contentBase: path.join(__dirname, '../../'),
   hot: true,
   quiet: false,
@@ -14,19 +17,15 @@ const webpackDevServerConfig = {
     colors: true,
     children: false
   },
-  watchOptions: {
-    poll: true
-  },
   historyApiFallback: false,
-  publicPath: '/public/',
-  proxy: {
-    '*': 'http://localhost:' + (process.env.PORT || 3000)
-  },
-  host: 'localhost'
+  publicPath: '/public/'
 }
+const compiler = webpack(webpackConfig)
 
-const server = new webpackDevServer(webpack(webpackConfig), webpackDevServerConfig);
-
-server.listen(8080, function() {
-  console.log('Webpack dev server running at localhost:8080')
-})
+const app = feathers()
+      .use(webpackDevMiddleware(compiler, webpackDevMiddlewareConfig))
+      .use(webpackHotMiddleware(compiler))
+      .use('/*', proxy('http://localhost:3000'))
+      .listen(8080, function() {
+        console.log('Feathers webpack dev server running at localhost:8080')
+      })

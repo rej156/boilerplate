@@ -55,7 +55,7 @@
     "compression": "^1.6.2",
     "css-modules-require-hook": "^4.0.1",
     "ejs": "^2.4.2",
-    "express-http-proxy": "^0.6.0",
+    "express-http-proxy": "^0.7.0",
     "feathers": "^2.0.1",
     "feathers-errors": "^2.2.0",
     "feathers-hooks": "^1.5.4",

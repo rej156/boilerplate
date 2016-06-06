@@ -3,7 +3,7 @@ import socketio from 'feathers-socketio/client'
 import io from 'socket.io-client'
 import hooks from 'feathers-hooks'
 
-const socket = io('http://localhost:8080')
+const socket = io('http://localhost:3000')
 
 const app = feathers()
       .configure(hooks())

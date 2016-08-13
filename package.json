@@ -61,7 +61,7 @@
     "feathers-socket-commons": "^2.3.0",
     "feathers-socketio": "^1.4.1",
     "mobx": "^2.4.0",
-    "mobx-connect": "0.2.2",
+    "mobx-connect": "0.3.8",
     "ramda": "^0.21.0",
     "react": "^15.2.1",
     "react-dom": "^15.1.0",

@@ -52,7 +52,7 @@
     "babel-runtime": "^6.9.2",
     "body-parser": "^1.15.1",
     "compression": "^1.6.2",
-    "css-modules-require-hook": "^4.0.1",
+    "css-modules-require-hook": "^4.0.4",
     "ejs": "^2.5.1",
     "feathers": "^2.0.1",
     "feathers-errors": "^2.4.0",

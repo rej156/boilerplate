@@ -56,7 +56,7 @@
     "ejs": "^2.5.1",
     "feathers": "^2.0.1",
     "feathers-errors": "^2.4.0",
-    "feathers-hooks": "^1.5.4",
+    "feathers-hooks": "^1.6.1",
     "feathers-rest": "^1.4.2",
     "feathers-socket-commons": "^2.3.0",
     "feathers-socketio": "^1.4.1",

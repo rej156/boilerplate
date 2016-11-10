@@ -25,7 +25,7 @@
     "feathers-memory": "^0.7.5",
     "happypack": "^2.1.1",
     "http-proxy-middleware": "^0.17.0",
-    "lost": "^7.0.3",
+    "lost": "^7.1.1",
     "mobx-react-devtools": "^4.2.0",
     "postcss-bem-linter": "^2.5.1",
     "postcss-cssnext": "^2.6.0",

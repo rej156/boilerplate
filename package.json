@@ -68,6 +68,6 @@
     "react-router": "^2.6.0",
     "serve-static": "^1.11.0",
     "socket.io-client": "^1.4.6",
-    "uws": "^0.7.8"
+    "uws": "^0.11.1"
   }
 }

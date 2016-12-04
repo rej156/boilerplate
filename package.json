@@ -23,7 +23,7 @@
     "cors": "^2.7.1",
     "css-loader": "^0.23.1",
     "feathers-memory": "^0.7.5",
-    "happypack": "^2.1.1",
+    "happypack": "^3.0.1",
     "http-proxy-middleware": "^0.17.0",
     "lost": "^7.0.3",
     "mobx-react-devtools": "^4.2.0",

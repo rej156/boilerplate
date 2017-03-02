@@ -57,7 +57,7 @@
     "feathers": "^2.0.1",
     "feathers-errors": "^2.4.0",
     "feathers-hooks": "^1.5.4",
-    "feathers-rest": "^1.4.2",
+    "feathers-rest": "^1.7.1",
     "feathers-socket-commons": "^2.3.0",
     "feathers-socketio": "^1.4.1",
     "mobx": "^2.4.0",

@@ -19,7 +19,7 @@
   "homepage": "https://github.com/benjaminlees/feathersjs-react-mobx-realtime#readme",
   "devDependencies": {
     "ava": "^0.15.2",
-    "babel-loader": "^6.2.4",
+    "babel-loader": "^6.4.1",
     "cors": "^2.7.1",
     "css-loader": "^0.23.1",
     "feathers-memory": "^0.7.5",

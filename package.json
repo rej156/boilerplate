@@ -59,7 +59,7 @@
     "feathers-hooks": "^1.5.4",
     "feathers-rest": "^1.4.2",
     "feathers-socket-commons": "^2.3.0",
-    "feathers-socketio": "^1.4.1",
+    "feathers-socketio": "^1.6.0",
     "mobx": "^2.4.0",
     "mobx-connect": "0.2.2",
     "ramda": "^0.21.0",

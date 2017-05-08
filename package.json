@@ -32,7 +32,7 @@
     "postcss-include": "^0.3.1",
     "postcss-loader": "^0.9.1",
     "postcss-reporter": "^1.4.1",
-    "postcss-simple-vars": "^3.0.0",
+    "postcss-simple-vars": "^4.0.0",
     "postcss-url": "^5.1.2",
     "react-hot-loader": "^3.0.0-beta.2",
     "style-loader": "^0.13.1",

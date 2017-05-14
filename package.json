@@ -26,7 +26,7 @@
     "happypack": "^2.1.1",
     "http-proxy-middleware": "^0.17.0",
     "lost": "^7.0.3",
-    "mobx-react-devtools": "^4.2.0",
+    "mobx-react-devtools": "^4.2.13",
     "postcss-bem-linter": "^2.5.1",
     "postcss-cssnext": "^2.6.0",
     "postcss-include": "^0.3.1",

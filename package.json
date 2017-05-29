@@ -54,7 +54,7 @@
     "compression": "^1.6.2",
     "css-modules-require-hook": "^4.0.1",
     "ejs": "^2.5.1",
-    "feathers": "^2.0.1",
+    "feathers": "^2.1.3",
     "feathers-errors": "^2.4.0",
     "feathers-hooks": "^1.5.4",
     "feathers-rest": "^1.4.2",
